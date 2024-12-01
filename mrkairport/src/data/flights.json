@@ -1,0 +1,52 @@
+[
+    {
+      "flightNumber": "AC 7773",
+      "airline": "Air Canada",
+      "additionalInfo": "Operated by Jazz on behalf of Air Canada",
+      "departureTime": "05:00",
+      "arrivalTime": "06:35"
+    },
+    {
+      "flightNumber": "AC 481",
+      "airline": "Air Canada",
+      "additionalInfo": null,
+      "departureTime": "06:00",
+      "arrivalTime": "07:35"
+    },
+    {
+      "flightNumber": "MS 9621",
+      "airline": "EgyptAir",
+      "additionalInfo": "Operated by Air Canada 481",
+      "departureTime": "06:00",
+      "arrivalTime": "07:35"
+    },
+    {
+      "flightNumber": "PD 102",
+      "airline": "Porter Airlines",
+      "additionalInfo": null,
+      "departureTime": "06:45",
+      "arrivalTime": "08:10"
+    },
+    {
+      "flightNumber": "TS 7802",
+      "airline": "Air Transat",
+      "additionalInfo": "Operated by Porter Airlines 102",
+      "departureTime": "06:45",
+      "arrivalTime": "08:10"
+    },
+    {
+      "flightNumber": "WS 579",
+      "airline": "WestJet",
+      "additionalInfo": null,
+      "departureTime": "06:45",
+      "arrivalTime": "08:24"
+    },
+    {
+      "flightNumber": "AM 7272",
+      "airline": "Aeromexico",
+      "additionalInfo": "Operated by WestJet 579",
+      "departureTime": "06:45",
+      "arrivalTime": "08:24"
+    }
+  ]
+  
