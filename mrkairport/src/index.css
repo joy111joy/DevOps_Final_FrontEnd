@@ -279,6 +279,9 @@ header, .admin-link {
   padding-top: 100px;
   font-family: 'Montserrat';
 }
+.fullBox {
+  width: 113px;
+}
 
 .flightItem {
   display: flex;
@@ -287,7 +290,7 @@ header, .admin-link {
   align-items: center;
   background-color: #1e1e1e;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   height: 100px;
   width: 90%;
   padding: 0 10px 0 40px;
@@ -296,18 +299,90 @@ header, .admin-link {
 
 }
 
-.flightAddInfo {
-  width: 600px;
-}
 
 .flightAirline {
   width: 200px;
   text-align: left;
 }
 .flightNum {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 200px;
+}
+
+.flightNum h3 {
+  margin-bottom: -10px;
+}
+
+.flightStatus {
+  width: 100px;
+  text-align: center;
+}
+
+.flightGate {
+  width: 100px;
+  text-align: center;
+}
+
+.flightTerm {
+  width: 100px;
+  text-align: center;
+}
+
+.flightDepart, .flightArrival {
+  width: 250px;
+  text-align: center;
+}
+
+.columnTitles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 1.25rem;
+  width: 90%;
+  padding: 0 10px 0 40px;
+
+}
+
+.columnTitles div {
+  display : flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   text-align: left;
 }
+
+.ColFlight {
+  width: 200px;
+  margin-right: -5px;
+
+}
+.ColStatus {
+  width: 100px;
+}
+
+.ColGate {
+  width: 100px;
+}
+
+
+.ColTerm {
+  width: 100px;
+}
+
+.ColDepart, .ColArrival {
+  width: 250px;
+  text-align: center;
+}
+
+
+
+
 
 .auth {
   height: 100vh;

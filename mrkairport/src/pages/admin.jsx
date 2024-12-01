@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import Banner from '../components/Banner';
+import AddFlight from '../components/forms/flights/addFlight';
 
 function Admin() {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [showAddFlightForm, setShowAddFlightForm] = useState(false);
 
   const toggleDropdown = (index) => {
     setOpenDropdown(openDropdown === index ? null : index);
+  };
+
+  const toggleAddFlightForm = () => {
+    setShowAddFlightForm(!showAddFlightForm);
+  };
+
+  const handleAddFlight = (flightData) => {
+    console.log('Flight added:', flightData);
   };
 
   return (
@@ -31,11 +41,18 @@ function Admin() {
         >
           Flights
         </button>
+
         {openDropdown === 0 && (
           <div style={{ marginTop: '10px', padding: '10px', background: '#f0f0f0', borderRadius: '8px' }}>
-            <p>Add Flight</p>
-            <p>View Flights</p>
-            <p>Update Flight</p>
+            <button
+              onClick={toggleAddFlightForm}
+              style={{ marginBottom: '10px', cursor: 'pointer' }}
+            >
+              Add Flight
+            </button>
+
+            {/* Show the form to add a flight */}
+            {showAddFlightForm && <AddFlight onSubmit={handleAddFlight} />}
           </div>
         )}
       </div>
@@ -61,9 +78,12 @@ function Admin() {
         </button>
         {openDropdown === 1 && (
           <div style={{ marginTop: '10px', padding: '10px', background: '#f0f0f0', borderRadius: '8px' }}>
-            <p>Add Aircraft</p>
-            <p>View Aircraft</p>
-            <p>Update Aircraft</p>
+            <button
+              onClick={() => console.log('Show Add Aircraft Form')}
+              style={{ marginBottom: '10px', cursor: 'pointer' }}
+            >
+              Add Aircraft
+            </button>
           </div>
         )}
       </div>
@@ -89,9 +109,12 @@ function Admin() {
         </button>
         {openDropdown === 2 && (
           <div style={{ marginTop: '10px', padding: '10px', background: '#f0f0f0', borderRadius: '8px' }}>
-            <p>Add Airport</p>
-            <p>View Airports</p>
-            <p>Update Airport</p>
+            <button
+              onClick={() => console.log('Show Add Airport Form')}
+              style={{ marginBottom: '10px', cursor: 'pointer' }}
+            >
+              Add Airport
+            </button>
           </div>
         )}
       </div>
