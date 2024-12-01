@@ -1,20 +1,42 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import LoginOverlay from './LoginOverlay';
 
 function Header() {
-  return (
-    <header>
-        <div className='TopHead'>
-            <Link><h1>MRK Airport Managment</h1></Link>
-        </div>
-        <div className='BotHead'>
-            <Link href='/'>Flight List</Link>
-            <Link href='/'>Flight</Link>
-            <Link href='/'></Link>
+  const [showLoginOverlay, setShowLoginOverlay] = useState(false);
+  const navigate = useNavigate(); // Initialize navigate here
 
+  const handleLoginSuccess = () => {
+    console.log('Login successful! Redirecting to admin...');
+    navigate('/admin'); // Use navigate to redirect
+  };
+
+  return (
+    <>
+      <header>
+        <div className="topHead">
+          <Link to={'/'}><h1>MRK Airport Management</h1></Link>
         </div>
-    </header>
-  )
+        <div className="botHead">
+          <Link to="/flightlist">Flight List</Link>
+          <Link to="/">Airport Guide</Link>
+          <button
+            className="admin-link"
+            onClick={() => setShowLoginOverlay(true)}
+          >
+            <Link>Administration</Link>
+          </button>
+        </div>
+      </header>
+
+      {/* Render the LoginOverlay */}
+      <LoginOverlay
+        isVisible={showLoginOverlay}
+        onClose={() => setShowLoginOverlay(false)}
+        onSuccess={handleLoginSuccess}
+      />
+    </>
+  );
 }
 
-export default Header
+export default Header;
