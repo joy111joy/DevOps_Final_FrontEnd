@@ -1,4 +1,3 @@
 export const icons = {
-    clock: require('../assets/icons/clockIcon.png'),
-  };
-  
+  clock: require("../assets/icons/clockIcon.png"),
+};

@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function LoginOverlay({ isVisible, onClose, onSuccess }) {
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = () => {
-    if (password === '123') {
-      onSuccess(); 
-      onClose();  
+    if (password === "123") {
+      onSuccess();
+      onClose();
     } else {
-      setError('Incorrect password. Please try again.');
+      setError("Incorrect password. Please try again.");
     }
   };
 
-  if (!isVisible) return null; 
+  if (!isVisible) return null;
 
   return (
     <div className="overlay" onClick={onClose}>
-      <div
-        className="logInBox"
-        onClick={(e) => e.stopPropagation()} 
-      >
+      <div className="logInBox" onClick={(e) => e.stopPropagation()}>
         <h2>Login</h2>
         <input
           type="password"

@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function AddFlight({ onSubmit }) {
   const [flightData, setFlightData] = useState({
-    flightNumber: '',
-    departure: '',
-    arrival: '',
-    departureTime: '',
-    arrivalTime: '',
+    flightNumber: "",
+    airline: "",
+    scheduledDepartureTime: "",
+    scheduledArrivalTime: "",
+    status: "",
+    gate: "",
+    terminal: "",
   });
 
   const handleChange = (e) => {
@@ -19,11 +21,14 @@ function AddFlight({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(flightData); // Pass the flight data to the parent component
+    onSubmit(flightData); 
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+    <form
+      onSubmit={handleSubmit}
+      style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+    >
       <input
         type="text"
         name="flightNumber"
@@ -34,37 +39,57 @@ function AddFlight({ onSubmit }) {
       />
       <input
         type="text"
-        name="departure"
-        placeholder="Departure Airport"
-        value={flightData.departure}
+        name="airline"
+        placeholder="Airline"
+        value={flightData.airline}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="datetime-local"
+        name="scheduledDepartureTime"
+        placeholder="Departure Time"
+        value={flightData.scheduledDepartureTime}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="datetime-local"
+        name="scheduledArrivalTime"
+        placeholder="Arrival Time"
+        value={flightData.scheduledArrivalTime}
+        onChange={handleChange}
+        required
+      />
+        <select
+          name="status"
+          value={flightData.status}
+          onChange={handleChange}
+          required
+        >
+          <option value="On Time">On Time</option>
+          <option value="In-Flight">In-Flight</option>
+          <option value="Landed">Landed</option>
+          <option value="Delayed">Delayed</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      <input
+        type="text"
+        name="gate"
+        placeholder="Gate"
+        value={flightData.gate}
         onChange={handleChange}
         required
       />
       <input
         type="text"
-        name="arrival"
-        placeholder="Arrival Airport"
-        value={flightData.arrival}
+        name="terminal"
+        placeholder="Terminal"
+        value={flightData.terminal}
         onChange={handleChange}
         required
       />
-      <input
-        type="datetime-local"
-        name="departureTime"
-        placeholder="Departure Time"
-        value={flightData.departureTime}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="datetime-local"
-        name="arrivalTime"
-        placeholder="Arrival Time"
-        value={flightData.arrivalTime}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit" style={{ marginTop: '10px' }}>Add Flight</button>
+      <button type="submit">Add Flight</button>
     </form>
   );
 }
