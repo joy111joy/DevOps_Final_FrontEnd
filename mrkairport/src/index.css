@@ -267,13 +267,33 @@ header,
 .flightListCont {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: #667489;
   gap: 20px;
   padding-top: 100px;
   font-family: "Montserrat";
+  padding-bottom: 100px;
 }
+
+.flightListCont h2 {
+  font-size: 2rem;
+  color: white;
+}
+.filterSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 40%;
+}
+
+.filterSection input {
+  height: 50px;
+  width: 30%;
+  font-size: 1rem;
+}
+
 .fullBox {
   width: 113px;
 }
@@ -476,3 +496,29 @@ header,
   background: #f0f0f0;
   border-radius: 8px;
 }
+
+.airportList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.airportButton {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.airportButton:hover {
+  background-color: #0056b3;
+}
+
+.airportDetails {
+  margin-top: 2rem;
+}
+
+
