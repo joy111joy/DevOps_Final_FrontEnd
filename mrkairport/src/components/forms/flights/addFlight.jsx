@@ -9,8 +9,8 @@ function AddFlight({ onSubmit }) {
     status: "",
     gate: "",
     terminal: "",
-    departureIATA: "",
-    arrivalIATA: "",
+    departureIata: "",
+    arrivalIata: "",
   });
 
   const handleChange = (e) => {
@@ -93,17 +93,17 @@ function AddFlight({ onSubmit }) {
       />
         <input
         type="text"
-        name="departureIATA"
+        name="departureIata"
         placeholder="Departure IATA"
-        value={flightData.departureIATA}
+        value={flightData.departureIata}
         onChange={handleChange}
         required
       />
         <input
         type="text"
-        name="arrivalIATA"
+        name="arrivalIata"
         placeholder="Arrival IATA"
-        value={flightData.arrivalIATA}
+        value={flightData.arrivalIata}
         onChange={handleChange}
         required
       />
