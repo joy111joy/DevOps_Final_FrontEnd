@@ -16,9 +16,6 @@ function FlightsDropdown({
     try {
       const newFlight = await addFlight(flightData);
   
-      await setDeparture(flightData.departureIATA, flightData.flightNumber);
-      await setArrival(flightData.arrivalIATA, flightData.flightNumber);
-  
       setFlights((prevFlights) => [...prevFlights, newFlight]);
     } catch (error) {
       console.error("Error adding flight or setting departure/arrival:", error);

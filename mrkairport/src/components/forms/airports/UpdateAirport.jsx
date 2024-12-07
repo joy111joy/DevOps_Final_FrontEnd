@@ -1,10 +1,11 @@
-import React, {useState} froom "react";
+import React, {useState} from "react";
 
 const UpdateAirport = ({ airport, onSubmit, onCancel})=> {
     const [formData, setFormData] = useState ({...airport});
     const handleChange = (e) => {
-    const {name, value} = e.target;
-    setFormData ({...formData, [name]: value});
+        const {name, value} = e.target;
+        setFormData ({...formData, [name]: value});
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();

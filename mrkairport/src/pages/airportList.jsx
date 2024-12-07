@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  getAllAirports,
-  getAirportDetails,
-  getDeparturesByAirport,
-  getArrivalsByAirport,
-} from "../services/airportService"; // Import API functions
+import { getAllAirports, getAirportDetails, getArrivalsByAirport, getDeparturesByAirport } from "../services/airportService"; 
 import Banner from "../components/Banner";
+
 
 function AirportList() {
   const [airports, setAirports] = useState([]);
@@ -34,17 +30,14 @@ function AirportList() {
     console.log('Selected Airport:', selectedAirport);
 
     setLoading(true);
-    setError(null);
+    setError(null); 
 
     try {
-      // Fetch airport details
       const airportDetails = await getAirportDetails(iataCode);
 
-      // Fetch arrivals and departures
       const arrivalsData = await getArrivalsByAirport(iataCode);
       const departuresData = await getDeparturesByAirport(iataCode);
 
-      // Update state
       setSelectedAirport({ ...airportDetails });
       setArrivals(arrivalsData);
       setDepartures(departuresData);

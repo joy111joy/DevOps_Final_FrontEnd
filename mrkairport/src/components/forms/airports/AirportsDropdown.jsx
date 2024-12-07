@@ -1,6 +1,6 @@
-import React, {use State} from "react";
-import AddAirport from "./addAirport";
-import UpdateAirport from "./updateAirport";
+import React, {useState} from "react";
+import AddAirport from "./AddAirport";
+import UpdateAirport from "./UpdateAirport";
 import {addAirport, deleteAirport} from "../../../services/airportService";
 
 function AirportsDropdown({
@@ -15,7 +15,7 @@ function AirportsDropdown({
     const handleAddAirport = async (airportData) => {
     try {
         const newAirport = await addAirport(airportData);
-        setAirports ((prevAirports) => [...preAirports, newAirport]);
+        setAirports ((prevAirports) => [...prevAirports, newAirport]);
         }catch (error) {
             console.error ("Error adding airport:", error);
             alert ("Failed to add airport.  Please try again.");
@@ -25,7 +25,7 @@ function AirportsDropdown({
     const handleDelete = async (airportCode) => {
     try{
         await deleteAirport(airportCode);
-        setAirports((preAirports)=>
+        setAirports((prevAirports)=>
          prevAirports.filter((airport)=> airport.airportCode !== airportCode)
         );
         } catch (error) {
@@ -37,7 +37,7 @@ function AirportsDropdown({
    return (
        <>
        <button
-       onClick={()=> set ShowAddAirportForm (!showAddAirportForm)}
+       onClick={()=> setShowAddAirportForm (!showAddAirportForm)}
        style={{ marginBottom: "10px", cursor: "pointer" }}
        >
        Add Aiport
@@ -49,14 +49,14 @@ function AirportsDropdown({
            <h3> Airport List </h3>
             <ul>
             {airports.map ((airport) => (
-             <il key={airport.airportCode}>
-                Airport Code : {airport.airportCode) - {airport.name}
-                <button onClick={90 => handleUpdateClick(airport)}>Update<?button>
-                <button onClick = {() => handleDelete (airport.airportCode)}>
+             <li key={airport.airportCode}>
+                Airport Code : {airport.airportCode} - {airport.name}
+                <button onClick={() => handleUpdateClick(airport)}>Update</button>
+                <button onClick={() => handleDelete(airport.airportCode)}>
                 Delete
                 </button>
                 </li>
-        ))}
+            ))}
     </ul>
     </div>
 

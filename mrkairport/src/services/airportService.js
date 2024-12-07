@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:8080/api/airports";
+const BASE_URL = "http://localhost:8080/api/airports";
 
 export const getAllAirports = async () => {
   try {
@@ -42,3 +43,18 @@ export const deleteAirport = async (id) => {
   }
 };
 
+
+export const getAirportDetails = async (iataCode) => {
+    const response = await axios.get(`${BASE_URL}/${iataCode}`);
+    return response.data;
+  };
+  
+  export const getDeparturesByAirport = async (iataCode) => {
+    const response = await axios.get(`${BASE_URL}/${iataCode}/departures`);
+    return response.data;
+  };
+  
+  export const getArrivalsByAirport = async (iataCode) => {
+    const response = await axios.get(`${BASE_URL}/${iataCode}/arrivals`);
+    return response.data;
+  };

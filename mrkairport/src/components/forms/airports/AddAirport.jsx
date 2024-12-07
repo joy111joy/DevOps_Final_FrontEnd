@@ -9,7 +9,7 @@ function AddAirport ({onSubmit}) {
         gates: "",
         });
 
-    const handlechange = (e) => {
+    const handleChange = (e) => {
         const {name, value} = e.target;
         setAirportData({
             ...airportData,

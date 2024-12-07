@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import AddAircraft from "./addAircraft";
-import UpdateAircraft from "./updateAircraft";
-import {addAircraft,deleteAircraft} from "../../../services/airvraftService";
+import AddAircraft from "./AddAircraft";
+import UpdateAircraft from "./UpdateAircraft";
+import {addAircraft,deleteAircraft} from "../../../services/aircraftService";
 
 function AircraftDropdown ({
     aircraft,
