@@ -9,6 +9,8 @@ function AddFlight({ onSubmit }) {
     status: "",
     gate: "",
     terminal: "",
+    departureIATA: "",
+    arrivalIATA: "",
   });
 
   const handleChange = (e) => {
@@ -89,6 +91,23 @@ function AddFlight({ onSubmit }) {
         onChange={handleChange}
         required
       />
+        <input
+        type="text"
+        name="departureIATA"
+        placeholder="Departure IATA"
+        value={flightData.departureIATA}
+        onChange={handleChange}
+        required
+      />
+        <input
+        type="text"
+        name="arrivalIATA"
+        placeholder="Arrival IATA"
+        value={flightData.arrivalIATA}
+        onChange={handleChange}
+        required
+      />
+
       <button type="submit">Add Flight</button>
     </form>
   );

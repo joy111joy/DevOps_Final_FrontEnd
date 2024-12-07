@@ -5,6 +5,7 @@ import FlightList from "./pages/flightList";
 import { images } from "./constants/image";
 import Auth from "./pages/auth";
 import Admin from "./pages/admin";
+import AirportList from "./pages/airportList";
 function App() {
   return (
     <div
@@ -23,6 +24,8 @@ function App() {
           <Route path="/flightlist" element={<FlightList />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/airportlist" element={<AirportList />} />
+
         </Routes>
       </Router>
     </div>

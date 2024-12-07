@@ -20,7 +20,7 @@ function Header() {
         </div>
         <div className="botHead">
           <Link to="/flightlist">Flight List</Link>
-          <Link to="/">Airport Guide</Link>
+          <Link to="/airportlist">Airport Guide</Link>
           <button
             className="admin-link"
             onClick={() => setShowLoginOverlay(true)}

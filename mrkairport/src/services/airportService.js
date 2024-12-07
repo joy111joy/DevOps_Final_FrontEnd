@@ -41,3 +41,4 @@ export const deleteAirport = async (id) => {
     throw error;
   }
 };
+

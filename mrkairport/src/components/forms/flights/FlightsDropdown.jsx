@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddFlight from "./addFlight";
 import UpdateFlight from "./updateFlight";
-import { addFlight, deleteFlight } from "../../../services/flightService";
+import { addFlight, deleteFlight, setArrival, setDeparture } from "../../../services/flightService";
 
 function FlightsDropdown({
   flights,
@@ -15,12 +15,18 @@ function FlightsDropdown({
   const handleAddFlight = async (flightData) => {
     try {
       const newFlight = await addFlight(flightData);
+  
+      await setDeparture(flightData.departureIATA, flightData.flightNumber);
+      await setArrival(flightData.arrivalIATA, flightData.flightNumber);
+  
       setFlights((prevFlights) => [...prevFlights, newFlight]);
     } catch (error) {
-      console.error("Error adding flight:", error);
-      alert("Failed to add flight. Please try again.");
+      console.error("Error adding flight or setting departure/arrival:", error);
+      alert("Failed to add flight or set departure/arrival. Please try again.");
     }
   };
+  
+  
 
   const handleDelete = async (flightNumber) => {
     try {
