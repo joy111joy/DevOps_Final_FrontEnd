@@ -76,6 +76,7 @@ function AirportsDropdown() {
       <button
         onClick={() => setShowAddAirportForm(!showAddAirportForm)}
         style={{ marginBottom: "10px", cursor: "pointer" }}
+        className="AddBtn"
       >
         Add Airport
       </button>
@@ -88,8 +89,8 @@ function AirportsDropdown() {
         <ul>
           {airports.map((airport) => (
             <li key={airport.iataCode}>
-              {airport.name} ({airport.iataCode}) - {airport.location} {/* Display location instead of city/country */}
-              <button onClick={() => handleDeleteAirport(airport.iataCode)}>
+              <p>{airport.name} ({airport.iataCode}) - {airport.location} </p>
+              <button onClick={() => handleDeleteAirport(airport.iataCode)} className="DeleteBtn" >
                 Delete
               </button>
             </li>

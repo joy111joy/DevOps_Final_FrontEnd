@@ -39,24 +39,18 @@ function FlightsDropdown({
 
   return (
     <>
-      <button
-        onClick={() => setShowAddFlightForm(!showAddFlightForm)}
-        style={{ marginBottom: "10px", cursor: "pointer" }}
-      >
-        Add Flight
-      </button>
 
-      {showAddFlightForm && <AddFlight onSubmit={handleAddFlight} />}
+
 
       <div>
         <h3>Flight List</h3>
         <ul>
           {flights.map((flight) => (
             <li key={flight.flightNumber}>
-              Flight Number: {flight.flightNumber} - {flight.airline} | Status:{" "}
-              {flight.status}
-              <button onClick={() => handleUpdateClick(flight)}>Update</button>
-              <button onClick={() => handleDelete(flight.flightNumber)}>
+              <p>Flight Number: {flight.flightNumber} - {flight.airline} | Status:{" "}
+              {flight.status}</p>
+              <button onClick={() => handleUpdateClick(flight)} className="UpdateBtn">Update</button>
+              <button onClick={() => handleDelete(flight.flightNumber)} className="DeleteBtn">
                 Delete
               </button>
             </li>
@@ -71,6 +65,14 @@ function FlightsDropdown({
           onCancel={() => handleUpdateClick(null)}
         />
       )}
+            <button
+        onClick={() => setShowAddFlightForm(!showAddFlightForm)}
+        className="AddBtn"
+      >
+        Add Flight
+      </button>
+      {showAddFlightForm && <AddFlight onSubmit={handleAddFlight} />}
+
     </>
   );
 }
