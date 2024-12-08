@@ -1,82 +1,54 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-function AddAirport ({onSubmit}) {
-    const [airportData, setAirportData]= useState({
-        code: "",
-        name: "",
-        country: "",
-        terminals: "",
-        gates: "",
-        });
+function AddAirport({ onSubmit }) {
+  const [airportData, setAirportData] = useState({
+    iataCode: "",
+    name: "",
+    location: "", // Only location field now
+  });
 
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setAirportData({
-            ...airportData,
-            [name]: value,
-            });
-        };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setAirportData({ ...airportData, [name]: value });
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onSubmit(airportData);
-        };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(airportData); 
+  };
 
-    return (
-        <form
-        onSubmit = {handleSubmit}
-        style = {{display: "flex", flexDirection: "column", gap: "10px"}}
-        >
-        <input
-        type = "text"
-        name = "code"
-        placeholder = "Airport Code"
-        value = {airportData.code}
+  return (
+    <form
+      onSubmit={handleSubmit}
+      style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+    >
+      <input
+        type="text"
+        name="iataCode"
+        placeholder="IATA Code"
+        value={airportData.iataCode}
         onChange={handleChange}
         required
-        />
-        <input
-        type = "text"
-        name = "name"
-        placeholder = "Airport Name"
-        value = {airportData.name}
+      />
+      <input
+        type="text"
+        name="name"
+        placeholder="Airport Name"
+        value={airportData.name}
         onChange={handleChange}
         required
-        />
-        <input
-        type = "text"
-        name = "city"
-        placeholder = "City"
-        value = {airportData.city}
+      />
+      <input
+        type="text"
+        name="location"  // Only location field now
+        placeholder="Location"
+        value={airportData.location}
         onChange={handleChange}
         required
-        />
-        <input
-        type = "text"
-        name = "country"
-        placeholder = "Country"
-        value = {airportData.country}
-        onChange={handleChange}
-        required
-        />
-        <input
-        type = "text"
-        name = "terminals"
-        placeholder = "Terminals"
-        value = {airportData.terminals}
-        onChange={handleChange}
-        required
-        />
-        <input
-        type = "text"
-        name = "gates"
-        placeholder = "Gates"
-        value = {airportData.gates}
-        onChange={handleChange}
-        required
-        />
-        <button type = "submit">Add Airport</button>
-        </form>
-        );
-    }
+      />
+      <button type="submit">Add Airport</button>
+    </form>
+  );
+}
+
 export default AddAirport;

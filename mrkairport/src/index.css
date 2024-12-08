@@ -8,7 +8,10 @@ body {
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #667489;
 }
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -522,3 +525,52 @@ header,
 }
 
 
+
+
+
+/* Airport Details */
+
+.airportListCont {
+  background-color: #667489;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.airportList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.airportList button {
+  padding: 30px;
+  margin: 10px;
+  background-color: #1e1e1e;
+  font-size: 1rem;
+  border: 1px white solid;
+}
+
+
+
+.airportList h3 {
+  font-size: 2rem;
+  color: white;
+}
+
+.airportDetails h2 {
+  font-size: 2rem;
+  color: white;
+}
+
+.airportDetails p {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.airportDetails h3 {
+  color: white;
+  font-size: 1rem;
+}

@@ -1,79 +1,105 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import AddAirport from "./AddAirport";
 import UpdateAirport from "./UpdateAirport";
-import {addAirport, deleteAirport} from "../../../services/airportService";
+import { addAirport, deleteAirport, updateAirport, getAllAirports } from "../../../services/airportService";
 
-function AirportsDropdown({
-    airports,
-    setAirports,
-    handleUpdateClick,
-    selectedAirport,
-    handleUpdateSubmit,
-    }){
-    const [showAddAirportForm, setShowAddAirportForm] = useState(false);
+function AirportsDropdown() {
+  const [showAddAirportForm, setShowAddAirportForm] = useState(false);
+  const [selectedAirport, setSelectedAirport] = useState(null);
+  const [airports, setAirports] = useState([]); // Initialize as an empty array
+  const [error, setError] = useState(null); // Error state for handling errors
 
-    const handleAddAirport = async (airportData) => {
+  // Fetching the airports when the component mounts
+  useEffect(() => {
+    const fetchAirports = async () => {
+      try {
+        const data = await getAllAirports();
+        console.log("Fetched airports:", data); // Debugging
+        setAirports(data); // Assigning fetched data to state
+      } catch (err) {
+        console.error("Error fetching airports:", err);
+        setError('Failed to load airports. Please try again.');
+      }
+    };
+
+    fetchAirports();
+  }, []);
+
+  // Adding a new airport to the list
+  const handleAddAirport = async (airportData) => {
     try {
-        const newAirport = await addAirport(airportData);
-        setAirports ((prevAirports) => [...prevAirports, newAirport]);
-        }catch (error) {
-            console.error ("Error adding airport:", error);
-            alert ("Failed to add airport.  Please try again.");
-            }
-        };
+      // Ensure only location data is passed
+      const newAirport = await addAirport(airportData);
+      setAirports((prevAirports) => [...prevAirports, newAirport]);
+    } catch (error) {
+      console.error("Error adding airport:", error);
+      alert("Failed to add airport. Please try again.");
+    }
+  };
 
-    const handleDelete = async (airportCode) => {
-    try{
-        await deleteAirport(airportCode);
-        setAirports((prevAirports)=>
-         prevAirports.filter((airport)=> airport.airportCode !== airportCode)
-        );
-        } catch (error) {
-            console.error ("error deleting airport:", error);
-            alert ("Failed to delete airport.  Please try again.");
-            }
-        };
+  // Deleting an airport from the list
+  const handleDeleteAirport = async (iataCode) => {
+    try {
+      console.log(`Sending DELETE request for airport: ${iataCode}`);
+      await deleteAirport(iataCode); // Deleting the airport via API
 
-   return (
-       <>
-       <button
-       onClick={()=> setShowAddAirportForm (!showAddAirportForm)}
-       style={{ marginBottom: "10px", cursor: "pointer" }}
-       >
-       Add Aiport
-       </button>
+      // Remove the deleted airport from the state
+      setAirports((prevAirports) =>
+        prevAirports.filter((airport) => airport.iataCode !== iataCode)
+      );
 
-       {showAddAirportForm && <AddAirport onSubmit={handleAddAirport}/>}
+      console.log(`Successfully deleted airport with IATA code: ${iataCode}`);
+    } catch (error) {
+      console.error("Error deleting airport:", error);
+      alert("Failed to delete airport. Please try again.");
+    }
+  };
 
-       <div>
-           <h3> Airport List </h3>
-            <ul>
-            {airports.map ((airport) => (
-             <li key={airport.airportCode}>
-                Airport Code : {airport.airportCode} - {airport.name}
-                <button onClick={() => handleUpdateClick(airport)}>Update</button>
-                <button onClick={() => handleDelete(airport.airportCode)}>
+  // Handling the submission of updated airport information
+  const handleUpdateSubmit = async (updatedAirport) => {
+    try {
+      const updated = await updateAirport(updatedAirport);
+      setAirports((prevAirports) =>
+        prevAirports.map((airport) =>
+          airport.iataCode === updated.iataCode ? updated : airport
+        )
+      );
+      setSelectedAirport(null);
+    } catch (error) {
+      console.error("Error updating airport:", error);
+      alert("Failed to update airport. Please try again.");
+    }
+  };
+
+  return (
+    <>
+      <button
+        onClick={() => setShowAddAirportForm(!showAddAirportForm)}
+        style={{ marginBottom: "10px", cursor: "pointer" }}
+      >
+        Add Airport
+      </button>
+
+      {showAddAirportForm && <AddAirport onSubmit={handleAddAirport} />}
+
+      <div>
+        <h3>Airport List</h3>
+        {error && <div style={{ color: "red" }}>{error}</div>} {/* Error message display */}
+        <ul>
+          {airports.map((airport) => (
+            <li key={airport.iataCode}>
+              {airport.name} ({airport.iataCode}) - {airport.location} {/* Display location instead of city/country */}
+              <button onClick={() => handleDeleteAirport(airport.iataCode)}>
                 Delete
-                </button>
-                </li>
-            ))}
-    </ul>
-    </div>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-    {selectedAirport && ( <UpdateAirport
-        airport = {selectedAirport}
-        onSubmit={handleUpdateSubmit}
-        onCancel = {() => handleUpdateClick (null)}
-        />
-        )}
+
     </>
-    );
+  );
 }
 
 export default AirportsDropdown;
-
-
-  //      onClick={() => console.log("Show Add Airport Form")}
-
-
-

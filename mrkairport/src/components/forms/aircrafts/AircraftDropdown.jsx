@@ -32,7 +32,6 @@ function AircraftDropdown ({
       );
     } catch (error) {
       console.error("Error deleting aircraft:", error);
-      alert("Failed to delete aircraft. Please try again.");
     }
   };
 
