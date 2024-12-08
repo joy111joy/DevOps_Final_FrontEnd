@@ -54,7 +54,7 @@ function Admin() {
   };
 
   return (
-    <div>
+    <div className="Drop">
       <Banner
         mainMessage="MRK Airport Management"
         subMessage="Administration"

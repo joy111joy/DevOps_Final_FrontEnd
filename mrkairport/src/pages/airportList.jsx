@@ -60,8 +60,10 @@ function AirportList() {
         subMessage={"Explore airport information"}
         sideBar={true}
       />
+      <div className="airportListCont">
       <div className="airportList">
         <h3>Available Airports</h3>
+        <div>
         {airports.map((airport) => (
           <button
             key={airport.iataCode}
@@ -71,6 +73,7 @@ function AirportList() {
             {airport.name} ({airport.iataCode})
           </button>
         ))}
+        </div>
       </div>
 
       {loading && <div>Loading airport details...</div>}
@@ -78,7 +81,7 @@ function AirportList() {
       {selectedAirport && (
         <div className="airportDetails">
           <h2>{selectedAirport.name} ({selectedAirport.iataCode})</h2>
-          <p>Location: {selectedAirport.city}, {selectedAirport.country}</p>
+          <p>Location: {selectedAirport.location}</p>
 
 
           <h3>Departures</h3>
@@ -104,6 +107,7 @@ function AirportList() {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }
