@@ -1,43 +1,37 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/aircrafts";
+const BASE_URL = "http://localhost:8080/api/aircrafts";
 
 export const getAllAircraft = async () => {
   try {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(BASE_URL);
+    console.log("API response:", response.data); 
     return response.data;
   } catch (error) {
-    console.error("Error fetching aircraft:", error);
+    console.error("Error fetching aircrafts:", error);
     throw error;
   }
 };
 
 export const addAircraft = async (aircraftData) => {
-  try {
-    const response = await axios.post(API_URL, aircraftData);
-    return response.data;
-  } catch (error) {
-    console.error("Error adding aircraft:", error);
-    throw error;
-  }
+  const response = await axios.post(BASE_URL, aircraftData);
+  return response.data;
 };
 
-export const updateAircraft = async (aircraftId, updatedAircraftData) => {
+export const updateAircraft = async (aircraftData) => {
   try {
-    const response = await axios.put(`${API_URL}/${aircraftId}`, updatedAircraftData);
+    const response = await axios.put(`${BASE_URL}/${aircraftData.id}`, aircraftData);
     return response.data;
   } catch (error) {
-    console.error('Error updating aircraft:', error);
+    console.error("Error updating aircraft:", error);
     throw error;
   }
 };
 
 export const deleteAircraft = async (id) => {
   try {
-    const response = await axios.delete(`${API_URL}/${id}`);
-    return response.data;
+    await axios.delete(`${BASE_URL}/${id}`);
   } catch (error) {
     console.error("Error deleting aircraft:", error);
-    throw error;
-  }
-};
+    throw new Error("Could not delete aircraft.");
+  }};

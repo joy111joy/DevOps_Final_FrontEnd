@@ -14,7 +14,9 @@ const UpdateFlight = ({ flight, onSubmit, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}
+    className="UpdateForm"
+    >
       <div>
         <label>Flight Number:</label>
         <input

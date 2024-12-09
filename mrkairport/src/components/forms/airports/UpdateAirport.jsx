@@ -14,7 +14,9 @@ const UpdateAirport = ({ airport, onSubmit, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}
+    className="UpdateForm"
+    >
       <div>
         <label>IATA Code:</label>
         <input

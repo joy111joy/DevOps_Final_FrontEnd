@@ -29,7 +29,7 @@ function AddFlight({ onSubmit }) {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+      className="AddForm"
     >
       <input
         type="text"
@@ -108,7 +108,7 @@ function AddFlight({ onSubmit }) {
         required
       />
 
-      <button type="submit">Add Flight</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }

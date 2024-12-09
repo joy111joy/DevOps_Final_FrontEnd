@@ -56,8 +56,8 @@ function Admin() {
   return (
     <div className="Drop">
       <Banner
-        mainMessage="MRK Airport Management"
-        subMessage="Administration"
+        mainMessage="Administration"
+        subMessage="Select an option to manage data"
         sideBar={false}
       />
 
