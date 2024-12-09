@@ -18,7 +18,7 @@ function LoginOverlay({ isVisible, onClose, onSuccess }) {
   return (
     <div className="overlay" onClick={onClose}>
       <div className="logInBox" onClick={(e) => e.stopPropagation()}>
-        <h2>Login</h2>
+        <h2>Login (hint: 123)</h2>
         <input
           type="password"
           placeholder="Enter password"

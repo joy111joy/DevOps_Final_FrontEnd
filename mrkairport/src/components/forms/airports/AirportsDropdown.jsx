@@ -73,15 +73,6 @@ function AirportsDropdown() {
 
   return (
     <>
-      <button
-        onClick={() => setShowAddAirportForm(!showAddAirportForm)}
-        style={{ marginBottom: "10px", cursor: "pointer" }}
-        className="AddBtn"
-      >
-        Add Airport
-      </button>
-
-      {showAddAirportForm && <AddAirport onSubmit={handleAddAirport} />}
 
       <div>
         <h3>Airport List</h3>
@@ -97,6 +88,16 @@ function AirportsDropdown() {
           ))}
         </ul>
       </div>
+
+      <button
+        onClick={() => setShowAddAirportForm(!showAddAirportForm)}
+        style={{ marginBottom: "10px", cursor: "pointer" }}
+        className="AddBtn"
+      >
+        Add Airport
+      </button>
+
+      {showAddAirportForm && <AddAirport onSubmit={handleAddAirport} />}
 
 
     </>

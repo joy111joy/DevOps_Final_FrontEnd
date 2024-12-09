@@ -1,54 +1,65 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 
-// const UpdateAirport = ({ airport, onSubmit, onCancel }) => {
-//   const [formData, setFormData] = useState({ ...airport });
+const UpdateAircraft = ({ aircraft, onSubmit, onCancel }) => {
+  const [formData, setFormData] = useState({ ...aircraft });
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({ ...formData, [name]: value });
-//   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     onSubmit(formData); 
-//   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData);
+  };
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <div>
-//         <label>IATA Code:</label>
-//         <input
-//           type="text"
-//           name="iataCode"
-//           value={formData.iataCode}
-//           onChange={handleChange}
-//           disabled
-//         />
-//       </div>
-//       <div>
-//         <label>Airport Name:</label>
-//         <input
-//           type="text"
-//           name="name"
-//           value={formData.name}
-//           onChange={handleChange}
-//         />
-//       </div>
-//       <div>
-//         <label>Location:</label>
-//         <input
-//           type="text"
-//           name="location" 
-//           value={formData.location}
-//           onChange={handleChange}
-//         />
-//       </div>
-//       <button type="submit">Update Airport</button>
-//       <button type="button" onClick={onCancel}>
-//         Cancel
-//       </button>
-//     </form>
-//   );
-// };
+  return (
+    <form 
+    className="UpdateForm"
+    onSubmit={handleSubmit}
+    >
+      <div>
+        <label>Model:</label>
+        <input
+          type="text"
+          name="model"
+          value={formData.model}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>Manufacturer:</label>
+        <input
+          type="text"
+          name="manufacturer"
+          value={formData.manufacturer}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>Capacity:</label>
+        <input
+          type="number"
+          name="capacity"
+          value={formData.capacity}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>Range (km):</label>
+        <input
+          type="number"
+          name="flightRange"
+          value={formData.flightRange}
+          onChange={handleChange}
+        />
+      </div>
+      <button type="submit">Update Aircraft</button>
+      <button type="button" onClick={onCancel}>
+        Cancel
+      </button>
+    </form>
+  );
+};
 
-// export default UpdateAirport;
+export default UpdateAircraft;

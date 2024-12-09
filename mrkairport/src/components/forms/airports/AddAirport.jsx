@@ -20,7 +20,7 @@ function AddAirport({ onSubmit }) {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+      className="AddForm"
     >
       <input
         type="text"
@@ -46,7 +46,7 @@ function AddAirport({ onSubmit }) {
         onChange={handleChange}
         required
       />
-      <button type="submit">Add Airport</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }

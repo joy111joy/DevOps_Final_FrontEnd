@@ -623,3 +623,59 @@ header,
   font-size: 1.5rem;
   margin-bottom: 20px;
 }
+
+.AddForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.AddForm input, .AddForm select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #242424;
+}
+
+.AddForm button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #2d3748;
+  color: white;
+  cursor: pointer;
+}
+
+.UpdateForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.UpdateForm input{
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #242424;
+}
+
+.UpdateForm select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #242424;
+}
+
+.UpdateForm button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #2d3748;
+  color: white;
+  cursor: pointer;
+}
