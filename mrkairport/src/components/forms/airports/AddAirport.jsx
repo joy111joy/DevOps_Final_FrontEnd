@@ -4,7 +4,7 @@ function AddAirport({ onSubmit }) {
   const [airportData, setAirportData] = useState({
     iataCode: "",
     name: "",
-    location: "", // Only location field now
+    location: "", 
   });
 
   const handleChange = (e) => {
@@ -40,7 +40,7 @@ function AddAirport({ onSubmit }) {
       />
       <input
         type="text"
-        name="location"  // Only location field now
+        name="location"  
         placeholder="Location"
         value={airportData.location}
         onChange={handleChange}

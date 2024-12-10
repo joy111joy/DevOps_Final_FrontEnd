@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// Base API URL for flights
 const API_URL = "http://localhost:8080/api/flights";
 
 
@@ -47,22 +46,4 @@ export const deleteFlight = async (flightNumber) => {
 };
 
 
-// export const setDeparture = async (iataCode, flightNumber) => {
-//   try {
-//     await axios.p(API_URL, iataCode);
-//     return response.data;
-//   } catch (error) {
-//     console.error("Error setting departure:", error);
-//     throw new Error("Could not set departure.");
-//   }
-// };
 
-// export const setArrival = async (iataCode, flightNumber) => {
-//   try {
-//     const response = await axios.put(`${API_URL}/${iataCode}/arrivals/${flightNumber}`);
-//     return response.data;
-//   } catch (error) {
-//     console.error("Error setting arrival:", error);
-//     throw new Error("Could not set arrival.");
-//   }
-// };
