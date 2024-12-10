@@ -6,16 +6,15 @@ import { addAirport, deleteAirport, updateAirport, getAllAirports } from "../../
 function AirportsDropdown() {
   const [showAddAirportForm, setShowAddAirportForm] = useState(false);
   const [selectedAirport, setSelectedAirport] = useState(null);
-  const [airports, setAirports] = useState([]); // Initialize as an empty array
-  const [error, setError] = useState(null); // Error state for handling errors
+  const [airports, setAirports] = useState([]); 
+  const [error, setError] = useState(null); 
 
-  // Fetching the airports when the component mounts
   useEffect(() => {
     const fetchAirports = async () => {
       try {
         const data = await getAllAirports();
-        console.log("Fetched airports:", data); // Debugging
-        setAirports(data); // Assigning fetched data to state
+        console.log("Fetched airports:", data); 
+        setAirports(data); 
       } catch (err) {
         console.error("Error fetching airports:", err);
         setError('Failed to load airports. Please try again.');
@@ -25,10 +24,8 @@ function AirportsDropdown() {
     fetchAirports();
   }, []);
 
-  // Adding a new airport to the list
   const handleAddAirport = async (airportData) => {
     try {
-      // Ensure only location data is passed
       const newAirport = await addAirport(airportData);
       setAirports((prevAirports) => [...prevAirports, newAirport]);
     } catch (error) {
@@ -37,13 +34,11 @@ function AirportsDropdown() {
     }
   };
 
-  // Deleting an airport from the list
   const handleDeleteAirport = async (iataCode) => {
     try {
       console.log(`Sending DELETE request for airport: ${iataCode}`);
-      await deleteAirport(iataCode); // Deleting the airport via API
+      await deleteAirport(iataCode); 
 
-      // Remove the deleted airport from the state
       setAirports((prevAirports) =>
         prevAirports.filter((airport) => airport.iataCode !== iataCode)
       );
@@ -55,7 +50,6 @@ function AirportsDropdown() {
     }
   };
 
-  // Handling the submission of updated airport information
   const handleUpdateSubmit = async (updatedAirport) => {
     try {
       const updated = await updateAirport(updatedAirport);
@@ -76,7 +70,7 @@ function AirportsDropdown() {
 
       <div>
         <h3>Airport List</h3>
-        {error && <div style={{ color: "red" }}>{error}</div>} {/* Error message display */}
+        {error && <div style={{ color: "red" }}>{error}</div>}
         <ul>
           {airports.map((airport) => (
             <li key={airport.iataCode}>

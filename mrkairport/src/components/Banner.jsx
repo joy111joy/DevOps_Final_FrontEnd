@@ -21,7 +21,6 @@ function Banner({ mainMessage, subMessage, sideBar }) {
   return (
     <div
       className="banner"
-      //   style={{ backgroundImage: `url(${images.fullBack})` }}
     >
       <div className="mainBar">
         <div className="mainMess">

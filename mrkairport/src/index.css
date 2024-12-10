@@ -201,36 +201,27 @@ header,
 
 .homeCont {
   display: flex;
-  flex-direction: column; /* Stack children vertically */
+  flex-direction: column; 
   height: 100vh;
+  padding-bottom: 100px;
 }
 .linkBox {
-  flex-grow: 1; /* Take up remaining space */
+  flex-grow: 1; 
   display: flex;
   flex-direction: row;
 }
 .fillBox {
-  flex-grow: 0.2; /* Take up remaining space */
-  /* background-color: #1e1e1e; */
+  flex-grow: 0.5; 
 }
 .linkBox div {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-.flightLink {
-  flex-grow: 1; /* Take up remaining space */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  background-color: #111753;
-  color: white;
-  text-decoration: none;
-}
 
-.airportLink {
-  flex-grow: 1; /* Take up remaining space */
+
+.pageLinkBox {
+  flex-grow: 1; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -238,17 +229,27 @@ header,
   background-color: #7681ba;
   color: white;
   text-decoration: none;
+  gap: 20px;
+  font-family: "Montserrat";
+  overflow: hidden;
+  background-repeat: none;
+  background-size: cover;
 }
-
-.adminLink {
-  flex-grow: 1; /* Take up remaining space */
+.admin-link-home {
+  flex-grow: 1; 
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  background-color: #111753;
+  background-color: #7681ba;
   color: white;
   text-decoration: none;
+  background-color: transparent;
+  border: none;
+  overflow: hidden;
+  background-repeat: none;
+  background-size: cover;
+  cursor: pointer;
 }
 
 .shadeBox {
@@ -259,25 +260,34 @@ header,
   transition: opacity 0.5s;
   float: left;
   position: relative;
+  transition: transform 0.5s;
 }
 
-.shadeBox:hover {
-  opacity: 0;
+.pageLinkBox:hover .shadeBox {
+  transform:scaleY(0.5);
+  transform: translateY(65%);
 }
 
 .linkBoxTxt {
+  position: absolute;
+  width: 25%;
+  font-size: 1rem;
+  margin-top: 380px;
 }
-.flightListCont {
+
+.pageLinkBox {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   background-color: #667489;
   gap: 20px;
-  padding-top: 100px;
   font-family: "Montserrat";
-  padding-bottom: 100px;
+  overflow: hidden;
+  background-repeat: none;
+  background-size: cover;
 }
+
 
 .flightListCont h2 {
   font-size: 2rem;
@@ -398,35 +408,33 @@ header,
 .auth {
   height: 100vh;
 }
-/* Overlay background */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+  background: rgba(0, 0, 0, 0.7); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensures it appears above everything */
+  z-index: 1000; 
 }
 
-/* Login Box */
 .logInBox {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #4a5568; /* Adjust to match your theme */
+  background-color: #4a5568; 
   gap: 20px;
-  width: 400px; /* Adjust dimensions */
+  width: 400px; 
   height: 300px;
   padding: 20px;
   border-radius: 15px;
   color: white;
   border: 2px solid black;
-  z-index: 1100; /* Higher than the overlay */
+  z-index: 1100; 
 }
 
 .logInBox input {
@@ -448,7 +456,7 @@ header,
 }
 
 .logInBox button.cancel {
-  background-color: #e53e3e; /* Cancel button with a red background */
+  background-color: #e53e3e;  
 }
 
 .logInBox .error {
@@ -532,7 +540,6 @@ header,
 
 
 
-/* Airport Details */
 
 .airportListCont {
   background-color: #667489;

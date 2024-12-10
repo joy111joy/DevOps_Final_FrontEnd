@@ -30,7 +30,6 @@ function Header() {
         </div>
       </header>
 
-      {/* Render the LoginOverlay */}
       <LoginOverlay
         isVisible={showLoginOverlay}
         onClose={() => setShowLoginOverlay(false)}

@@ -6,7 +6,7 @@ const BASE_URL = "http://localhost:8080/api/airports";
 export const getAllAirports = async () => {
   try {
     const response = await axios.get(API_URL);
-    console.log("API response:", response.data); // Debugging the response
+    console.log("API response:", response.data); 
     return response.data;
   } catch (error) {
     console.error("Error fetching airports:", error);
@@ -51,7 +51,7 @@ export const deleteAirport = async (iataCode) => {
     console.log('Airport deleted successfully');
   } catch (error) {
     console.error('Error deleting airport:', error.message);
-    throw error; // Re-throw the error to be handled in the component
+    throw error; 
   }
 };
 

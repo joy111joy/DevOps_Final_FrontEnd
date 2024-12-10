@@ -61,7 +61,6 @@ function Admin() {
         sideBar={false}
       />
 
-      {/* Flights Section */}
       <Dropdown
         title="Flights"
         isOpen={openDropdown === 0}
@@ -76,7 +75,6 @@ function Admin() {
         />
       </Dropdown>
 
-      {/* Aircraft Section */}
       <Dropdown
         title="Aircraft"
         isOpen={openDropdown === 1}
@@ -85,7 +83,6 @@ function Admin() {
         <AircraftDropdown />
       </Dropdown>
 
-      {/* Airports Section */}
       <Dropdown
         title="Airports"
         isOpen={openDropdown === 2}
