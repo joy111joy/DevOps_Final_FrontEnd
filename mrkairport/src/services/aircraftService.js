@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/api/aircrafts";
+const BASE_URL = "http://localhost:8081/api/aircrafts";
 
 export const getAllAircraft = async () => {
   try {
     const response = await axios.get(BASE_URL);
-    console.log("API response:", response.data); 
+    console.log("API response:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching aircrafts:", error);
@@ -20,7 +20,10 @@ export const addAircraft = async (aircraftData) => {
 
 export const updateAircraft = async (aircraftData) => {
   try {
-    const response = await axios.put(`${BASE_URL}/${aircraftData.id}`, aircraftData);
+    const response = await axios.put(
+      `${BASE_URL}/${aircraftData.id}`,
+      aircraftData
+    );
     return response.data;
   } catch (error) {
     console.error("Error updating aircraft:", error);
@@ -34,4 +37,5 @@ export const deleteAircraft = async (id) => {
   } catch (error) {
     console.error("Error deleting aircraft:", error);
     throw new Error("Could not delete aircraft.");
-  }};
+  }
+};
