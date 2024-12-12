@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/airports";
-const BASE_URL = "http://localhost:8080/api/airports";
+const API_URL = "http://localhost:8081/api/airports";
+const BASE_URL = "http://localhost:8081/api/airports";
 
 export const getAllAirports = async () => {
   try {
     const response = await axios.get(API_URL);
-    console.log("API response:", response.data); 
+    console.log("API response:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching airports:", error);
@@ -23,51 +23,58 @@ export const addAirport = async (airportData) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error adding airport:", error.response?.data || error.message);
+    console.error(
+      "Error adding airport:",
+      error.response?.data || error.message
+    );
     throw error;
   }
 };
 
 export const updateAirport = async (airportCode, updatedAirportData) => {
   try {
-    const response = await axios.put(`${API_URL}/${airportCode}`, updatedAirportData);
+    const response = await axios.put(
+      `${API_URL}/${airportCode}`,
+      updatedAirportData
+    );
     return response.data;
   } catch (error) {
-    console.error('Error updating airport:', error);
+    console.error("Error updating airport:", error);
     throw error;
   }
 };
 
 export const deleteAirport = async (iataCode) => {
   try {
-    const response = await fetch(`http://localhost:8080/api/airports/${iataCode}`, {
-      method: 'DELETE',
-    });
+    const response = await fetch(
+      `http://localhost:8080/api/airports/${iataCode}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     if (!response.ok) {
-      throw new Error('Failed to delete airport');
+      throw new Error("Failed to delete airport");
     }
 
-    console.log('Airport deleted successfully');
+    console.log("Airport deleted successfully");
   } catch (error) {
-    console.error('Error deleting airport:', error.message);
-    throw error; 
+    console.error("Error deleting airport:", error.message);
+    throw error;
   }
 };
 
-
-
 export const getAirportDetails = async (iataCode) => {
-    const response = await axios.get(`${BASE_URL}/${iataCode}`);
-    return response.data;
-  };
-  
-  export const getDeparturesByAirport = async (iataCode) => {
-    const response = await axios.get(`${BASE_URL}/${iataCode}/departures`);
-    return response.data;
-  };
-  
-  export const getArrivalsByAirport = async (iataCode) => {
-    const response = await axios.get(`${BASE_URL}/${iataCode}/arrivals`);
-    return response.data;
-  };
+  const response = await axios.get(`${BASE_URL}/${iataCode}`);
+  return response.data;
+};
+
+export const getDeparturesByAirport = async (iataCode) => {
+  const response = await axios.get(`${BASE_URL}/${iataCode}/departures`);
+  return response.data;
+};
+
+export const getArrivalsByAirport = async (iataCode) => {
+  const response = await axios.get(`${BASE_URL}/${iataCode}/arrivals`);
+  return response.data;
+};

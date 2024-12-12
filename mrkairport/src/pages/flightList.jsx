@@ -9,6 +9,52 @@ function FlightList() {
   const [filterAirport, setFilterAirport] = useState("");
   const [filterStatus, setFilterStatus] = useState("");
   const [filterFlightNumber, setFilterFlightNumber] = useState("");
+  const [selectedFlight, setSelectedFlight] = useState(null);
+  const [showSubscriptionForm, setShowSubscriptionForm] = useState(false);
+
+  const SubscriptionForm = ({ flightNumber }) => {
+    const [subscriptionData, setSubscriptionData] = useState({
+      email: "",
+      phone: "",
+      flightNumber: flightNumber,
+    });
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log("Subscription submitted:", subscriptionData);
+    };
+
+    return (
+      <div>
+        <form onSubmit={handleSubmit} className="subscriptionForm">
+          <input
+            type="email"
+            placeholder="Email"
+            value={subscriptionData.email}
+            onChange={(e) =>
+              setSubscriptionData({
+                ...subscriptionData,
+                email: e.target.value,
+              })
+            }
+            required
+          />
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            value={subscriptionData.phone}
+            onChange={(e) =>
+              setSubscriptionData({
+                ...subscriptionData,
+                phone: e.target.value,
+              })
+            }
+          />
+          <button type="submit">Subscribe to Updates</button>
+        </form>
+      </div>
+    );
+  };
 
   useEffect(() => {
     const fetchFlights = async () => {
@@ -22,7 +68,6 @@ function FlightList() {
         setLoading(false);
       }
     };
-
     fetchFlights();
   }, []);
 
@@ -33,20 +78,17 @@ function FlightList() {
     const matchesStatus = filterStatus
       ? flight.status.toLowerCase() === filterStatus.toLowerCase()
       : true;
-      const matchesFlightNumber = filterFlightNumber
-        ? flight.flightNumber.toLowerCase().includes(filterFlightNumber.toLowerCase())
-        : true;
+    const matchesFlightNumber = filterFlightNumber
+      ? flight.flightNumber
+          .toLowerCase()
+          .includes(filterFlightNumber.toLowerCase())
+      : true;
 
     return matchesAirport && matchesStatus && matchesFlightNumber;
   });
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div>
@@ -55,32 +97,28 @@ function FlightList() {
         subMessage={"Track Live flight information"}
         sideBar={true}
       />
-
       <div className="flightListCont">
         <h2>Search Flight</h2>
-      <div className="filterSection">
-        <input
-          type="text"
-          placeholder="Filter by Airport"
-          value={filterAirport}
-          onChange={(e) => setFilterAirport(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Filter by Status"
-          value={filterStatus}
-          onChange={(e) => setFilterStatus(e.target.value)}
-        />
-        <input 
+        <div className="filterSection">
+          <input
+            type="text"
+            placeholder="Filter by Airport"
+            value={filterAirport}
+            onChange={(e) => setFilterAirport(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Filter by Status"
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+          />
+          <input
             type="text"
             placeholder="Filter by Flight Number"
             value={filterFlightNumber}
             onChange={(e) => setFilterFlightNumber(e.target.value)}
-        />
-
-            </div>
-
-
+          />
+        </div>
         <div className="columnTitles">
           <div className="ColFlight"></div>
           <div className="ColStatus">
@@ -99,8 +137,21 @@ function FlightList() {
             <p>Arrival Time</p>
           </div>
         </div>
+
         {filteredFlights.map((flight, index) => (
           <div key={index} className="flightItem">
+            <button
+              onClick={() => {
+                setSelectedFlight(flight.flightNumber);
+                setShowSubscriptionForm(true);
+              }}
+              className="subscribeButton"
+            >
+              Subscribe
+            </button>
+            {selectedFlight === flight.flightNumber && showSubscriptionForm && (
+              <SubscriptionForm flightNumber={flight.flightNumber} />
+            )}
             <div className="flightNum">
               <h3>{flight.flightNumber}</h3>
               <p>{flight.airline}</p>
@@ -112,14 +163,14 @@ function FlightList() {
                     flight.status === "On Time"
                       ? "green"
                       : flight.status === "In-Flight"
-                      ? "yellow"
-                      : flight.status === "Landed"
-                      ? "green"
-                      : flight.status === "Delayed"
-                      ? "yellow"
-                      : flight.status === "Cancelled"
-                      ? "red"
-                      : "black",
+                        ? "yellow"
+                        : flight.status === "Landed"
+                          ? "green"
+                          : flight.status === "Delayed"
+                            ? "yellow"
+                            : flight.status === "Cancelled"
+                              ? "red"
+                              : "black",
                 }}
               >
                 {flight.status}

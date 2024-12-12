@@ -19,12 +19,10 @@ function Banner({ mainMessage, subMessage, sideBar }) {
   }, []);
 
   return (
-    <div
-      className="banner"
-    >
+    <div className="banner">
       <div className="mainBar">
         <div className="mainMess">
-          <h1>{mainMessage}</h1>
+          <h1 data-test-id="time-display">{mainMessage}</h1>
         </div>
         <div className="subMess">{subMessage}</div>
       </div>
@@ -32,10 +30,10 @@ function Banner({ mainMessage, subMessage, sideBar }) {
         <div className="sideBar">
           <div className="time">
             <img src={icons.clock} alt="clock" />
-            <h1>{currentTime}</h1>
+            <h1 data-testid="time-displaying">{currentTime}</h1>
           </div>
           <div>
-            <h1>No current Alerts</h1>
+            <h1> No current Alerts</h1>
           </div>
         </div>
       )}

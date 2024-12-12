@@ -4,7 +4,7 @@ import LoginOverlay from "./LoginOverlay";
 
 function Header() {
   const [showLoginOverlay, setShowLoginOverlay] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const handleLoginSuccess = () => {
     console.log("Login successful! Redirecting to admin...");
     navigate("/admin");

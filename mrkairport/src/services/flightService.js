@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/flights";
-
+const API_URL = "http://localhost:8081/api/flights";
 
 export const getAllFlights = async () => {
   try {
@@ -13,7 +12,6 @@ export const getAllFlights = async () => {
   }
 };
 
-
 export const addFlight = async (flightData) => {
   try {
     const response = await axios.post(API_URL, flightData);
@@ -24,17 +22,18 @@ export const addFlight = async (flightData) => {
   }
 };
 
-
 export const updateFlight = async (flightNumber, updatedFlightData) => {
   try {
-    const response = await axios.put(`${API_URL}/${flightNumber}`, updatedFlightData);
+    const response = await axios.put(
+      `${API_URL}/${flightNumber}`,
+      updatedFlightData
+    );
     return response.data;
   } catch (error) {
     console.error("Error updating flight:", error);
     throw new Error("Could not update flight.");
   }
 };
-
 
 export const deleteFlight = async (flightNumber) => {
   try {
@@ -44,6 +43,3 @@ export const deleteFlight = async (flightNumber) => {
     throw new Error("Could not delete flight.");
   }
 };
-
-
-
