@@ -287,7 +287,14 @@ header,
   background-repeat: none;
   background-size: cover;
 }
-
+.flightListCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 70px;
+}
 
 .flightListCont h2 {
   font-size: 2rem;
@@ -298,7 +305,7 @@ header,
   justify-content: space-around;
   align-items: center;
   margin-bottom: 2rem;
-  width: 40%;
+  width: 100%;
 }
 
 .filterSection input {

@@ -6,7 +6,6 @@ import AircraftDropdown from "../components/forms/aircrafts/AircraftDropdown";
 import AirportsDropdown from "../components/forms/airports/AirportsDropdown";
 import { getAllFlights } from "../services/flightService";
 import { updateFlight } from "../services/flightService";
-import { sendNotification } from "../services/notificationService";
 
 function Admin() {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -36,21 +35,18 @@ function Admin() {
 
   const handleUpdateSubmit = async (updatedFlightData) => {
     try {
+      console.log("Updating flight:", updatedFlightData);
+  
       await updateFlight(updatedFlightData.flightNumber, updatedFlightData);
-      await sendNotification({
-        flightNumber: updatedFlightData.flightNumber,
-        message: `Flight ${updatedFlightData.flightNumber} has been updated. New status: ${updatedFlightData.status}`,
-        type: "email",
-      });
-
+  
       setFlights((prevFlights) =>
         prevFlights.map((flight) =>
           flight.flightNumber === updatedFlightData.flightNumber
             ? updatedFlightData
-            : flight
-        )
+            : flight,
+        ),
       );
-
+  
       setSelectedFlight(null);
     } catch (error) {
       console.error("Error updating flight:", error);

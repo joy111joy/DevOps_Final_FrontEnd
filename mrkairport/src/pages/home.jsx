@@ -26,7 +26,7 @@ const Home = () => {
       <div className="linkBox">
         <div className="fillBox"></div>
 
-          <Link to={"/"}
+          <Link to={"/flightlist"}
           className="pageLinkBox"
           style={{ backgroundImage: `url(${images.flightLink})` }}> 
             <div className="shadeBox"></div>
@@ -37,7 +37,7 @@ const Home = () => {
           </Link>
 
 
-        <Link to={"/"}
+        <Link to={"/airportlist"}
           className="pageLinkBox"
           style={{ backgroundImage: `url(${images.airportLink})` }}>
             <div className="shadeBox"></div>

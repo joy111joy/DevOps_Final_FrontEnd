@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8081/api/airports";
-const BASE_URL = "http://localhost:8081/api/airports";
+const API_URL = "http://localhost:8080/api/airports";
+const BASE_URL = "http://localhost:8080/api/airports";
 
 export const getAllAirports = async () => {
   try {

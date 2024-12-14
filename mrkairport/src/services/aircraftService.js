@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8081/api/aircrafts";
+const BASE_URL = "http://localhost:8080/api/aircrafts";
 
 export const getAllAircraft = async () => {
   try {
